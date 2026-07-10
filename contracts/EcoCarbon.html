@@ -4,47 +4,90 @@ pragma solidity ^0.8.20;
 /**
  * @title EcoCarbon
  * @dev Protocolo de incentivos para la reducción de huella de carbono en la UNMSM.
- * Diseñado para mitigar la asimetría de información y reducir costos de transacción.
+ * Este contrato implementa una lógica de recompensas tipo Pigouviano
+ * para internalizar externalidades positivas en la gestión de residuos.
  */
 contract EcoCarbon {
-    
-    // Variables de estado
+
+    // Variables de configuración de la entidad reguladora
+    address public immutable regulator;
     string public constant name = "Eco-Carbon UNMSM Token";
     string public constant symbol = "ECO";
-    address public immutable regulator; // UNMSM Admin
+    uint256 public totalRecycledGlobal;
+    uint256 public constant REWARD_FACTOR = 10; // 1kg = 10 ECO
 
-    // Mapeo para tracking de impactos (Eficiencia O(1))
+    // Estructuras de datos para auditoría
+    struct RecyclingLog {
+        uint256 timestamp;
+        uint256 amountKg;
+        uint256 rewardIssued;
+        bool verified;
+    }
+
+    // Mapeos para tracking y auditoría (Eficiencia O(1))
     mapping(address => uint256) public balances;
     mapping(address => uint256) public totalRecycledKg;
+    mapping(address => RecyclingLog[]) public userHistory;
 
-    // Eventos para trazabilidad (Necesario para el Frontend)
-    event RecyclingRegistered(address indexed user, uint256 kgAmount, uint256 pointsRewarded);
+    // Eventos para trazabilidad (Necesario para Frontend e Indexers)
+    event RecyclingRegistered(address indexed user, uint256 kgAmount, uint256 pointsRewarded, uint256 timestamp);
+    event RegulatorChanged(address oldRegulator, address newRegulator);
 
+    // Constructor que define al emisor como regulador
     constructor() {
         regulator = msg.sender;
     }
 
+    // Modificador de seguridad para auditoría exclusiva
     modifier onlyRegulator() {
-        require(msg.sender == regulator, "Solo la entidad reguladora puede validar");
+        require(msg.sender == regulator, "EcoCarbon: Acceso denegado, solo regulador");
         _;
     }
 
     /**
-     * @notice Registra acción de reciclaje y emite incentivos
+     * @notice Registra una acción de reciclaje verificada
      * @param user Dirección del estudiante/usuario
-     * @param kg Cantidad de material reciclado en kg
+     * @param kg Cantidad de material procesado
      */
-    function registerRecycling(address user, uint256 kg) public onlyRegulator {
-        uint256 reward = kg * 10; // Factor de incentivo (1kg = 10 ECO)
+    function registerRecycling(address user, uint256 kg) external onlyRegulator {
+        require(kg > 0, "EcoCarbon: La cantidad debe ser mayor a cero");
         
+        uint256 reward = kg * REWARD_FACTOR;
+        
+        // Actualización de estado
         balances[user] += reward;
         totalRecycledKg[user] += kg;
+        totalRecycledGlobal += kg;
 
-        emit RecyclingRegistered(user, kg, reward);
+        // Registro en historial
+        userHistory[user].push(RecyclingLog({
+            timestamp: block.timestamp,
+            amountKg: kg,
+            rewardIssued: reward,
+            verified: true
+        }));
+
+        emit RecyclingRegistered(user, kg, reward, block.timestamp);
     }
 
-    // Consultas de estado
+    /**
+     * @notice Permite al usuario consultar su historial detallado
+     */
+    function getUserHistory(address user) external view returns (RecyclingLog[] memory) {
+        return userHistory[user];
+    }
+
+    /**
+     * @notice Permite consultar el balance actual de un usuario
+     */
     function getBalance(address user) external view returns (uint256) {
         return balances[user];
+    }
+
+    /**
+     * @notice Devuelve el total de kilos registrados por un usuario
+     */
+    function getTotalKg(address user) external view returns (uint256) {
+        return totalRecycledKg[user];
     }
 }
