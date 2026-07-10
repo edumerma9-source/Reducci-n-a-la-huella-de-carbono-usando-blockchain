@@ -1,1 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Carbon UNMSM | Protocolo Oficial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #050505; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(10px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="flex flex-col items-center min-h-screen text-slate-100 p-4">
 
+    <div class="mb-8 text-center mt-10">
+        <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-300">
+            Eco-Carbon UNMSM
+        </h1>
+        <p class="text-sm text-slate-400">Protocolo de Incentivos para la Economía Circular</p>
+    </div>
+
+    <div class="w-full max-w-sm bg-slate-900 rounded-[3rem] border-8 border-slate-800 overflow-hidden shadow-2xl">
+        
+        <div class="px-6 py-3 flex justify-between text-[10px] text-slate-500">
+            <span>09:41</span>
+            <div class="flex space-x-1"><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></div>
+        </div>
+
+        <div class="p-6 space-y-6">
+            <div class="p-5 rounded-3xl bg-gradient-to-br from-emerald-900 to-slate-900 border border-emerald-500/20">
+                <p class="text-[10px] uppercase font-bold text-emerald-400">Balance ECO</p>
+                <h2 class="text-4xl font-extrabold mt-1" id="balance">1,500</h2>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                    <p class="text-[9px] text-slate-500">KG Reciclados</p>
+                    <p class="font-bold" id="kg-total">150</p>
+                </div>
+                <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                    <p class="text-[9px] text-slate-500">Red Nodo</p>
+                    <p class="font-bold">LNet-Test</p>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <input type="number" id="inputKg" placeholder="Kg de plástico" 
+                       class="w-full bg-slate-950 border border-slate-800 p-4 rounded-2xl focus:ring-2 focus:ring-emerald-500 outline-none text-sm">
+                <button onclick="registrarAccion()" 
+                        class="w-full bg-emerald-500 text-slate-950 font-bold py-4 rounded-2xl hover:bg-emerald-400 transition-all">
+                    Registrar en Blockchain
+                </button>
+            </div>
+
+            <div class="space-y-3">
+                <h3 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Auditoría On-Chain</h3>
+                <div id="tx-log" class="space-y-2 h-32 overflow-y-auto no-scrollbar">
+                    <div class="text-[10px] p-2 bg-slate-950 rounded-lg border border-slate-800">Tx: 0x4a... verified (15kg)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let balance = 1500;
+        let totalKg = 150;
+
+        function registrarAccion() {
+            const kg = parseFloat(document.getElementById('inputKg').value);
+            if (!kg || kg <= 0) return alert("Ingrese un valor positivo");
+
+            // Lógica de actualización
+            balance += (kg * 10);
+            totalKg += kg;
+
+            // Actualizar UI
+            document.getElementById('balance').innerText = balance.toLocaleString();
+            document.getElementById('kg-total').innerText = totalKg;
+
+            // Agregar a log
+            const log = document.getElementById('tx-log');
+            const newEntry = document.createElement('div');
+            newEntry.className = "text-[10px] p-2 bg-slate-950 rounded-lg border border-emerald-500/20 text-emerald-400";
+            newEntry.innerText = `Tx: 0x${Math.random().toString(16).slice(2,8)}... confirmed (${kg}kg)`;
+            log.prepend(newEntry);
+            
+            document.getElementById('inputKg').value = '';
+        }
+    </script>
+</body>
+</html>
