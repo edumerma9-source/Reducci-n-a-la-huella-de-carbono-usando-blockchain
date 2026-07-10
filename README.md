@@ -1,47 +1,42 @@
-# 🌿 Eco-Carbon UNMSM: Blockchain Incentive Protocol for University Sustainability
+# Reducci-n-a-la-huella-de-carbono-usando-blockchain
 
-> **Innovating for a Sustainable Future Hackathon 2025**
-> Transforming environmental conservation into a verifiable economic asset within the Universidad Nacional Mayor de San Marcos.
+# Eco-Carbon UNMSM: A Blockchain Incentive Protocol for University Sustainability
 
-## 📖 Project Overview
+Innovating for a Sustainable Future Hackathon 2025. Transforming environmental conservation into a verifiable economic asset.
 
-Eco-Carbon UNMSM is a decentralized application (dApp) built on the **LACNet (EVM)** network. Our protocol establishes a direct, on-chain link between pro-environmental actions (recycling and waste reduction) and verifiable economic rewards.
+## 1. Project Overview
+Eco-Carbon UNMSM is a decentralized application (dApp) built on the LNet network. Our goal is to reduce the global carbon footprint by tokenizing ecological actions and aligning economic incentives through blockchain technology. By providing a transparent, immutable ledger for carbon reductions, we eliminate the information asymmetry and high transaction costs present in traditional carbon credit markets.
 
-By leveraging blockchain, we address the critical **information asymmetry** regarding waste management and reduce the **transaction costs** associated with traditional incentive mechanisms, effectively mitigating the negative externalities caused by municipal and institutional waste.
+## 2. Team Members and Roles
+| Member | Role | Responsibilities |
+| :--- | :--- | :--- |
+| Edu Adelky Merma Uñapillco | Project Lead & General Coordination | Plan/coordinate activities, oversee objectives, task distribution, review final report. |
+| Jair Antony Fredy Chipana Coarita | Lead Researcher | Gather scientific/bibliographic info, analyze climate change causes/consequences, select reliable sources. |
+| Godfrey Torres Huacho | Writing & Documentation | Draft/organize content, review coherence/structure, adapt to academic language. |
+| Tony Alexander Herrada Callirgos | Design & Presentation | Design presentation, produce charts/tables/images, organize visual content. |
+| Yordi Yulino Cainicela Pérez | Evaluation & Improvement | Analyze reduction strategies, formulate sustainable recommendations, final review. |
 
-## 🗂️ Repository Structure
+## 3. Problem Description
+Peru faces a structural crisis in solid waste management. With only 2.7% of waste formally recovered in 2024, our project addresses market failures:
+- **Pigou's Negative Externalities**: Acts as a digital Pigouvian subsidy.
+- **Coase's Transaction Costs**: Reduces friction via a simplified Web3 interface.
+- **Akerlof's Information Asymmetry**: Provides immutable "proof of recycling".
 
-* 📂 `contracts/`: Contains `EcoIncentives.sol`, our EVM-compatible smart contract implementing the incentive mechanism.
-* 📂 `Frontend/`: Contains the user interface for students and faculty to track their contributions.
-* 📂 `Presentation/`: Contains our technical-economic Pitch Deck and documentation.
+## 4. Technology Stack
+| Technology | Role | Justification |
+| :--- | :--- | :--- |
+| Solidity 0.8.20 & EVM | Smart Contract Core | Guarantees immutability and transparency. |
+| Red LNet (Testnet) | Blockchain Infrastructure | Low-cost node participation. |
+| Remix IDE | Development Environment | Minimizes R&D time. |
+| MetaMask | Decentralized Wallet | Standardizes user interaction. |
 
-## ⚙️ Technologies Used
+## 5. Repository Structure
+- `/contracts`: EcoCarbon.sol — Solidity smart contract implementing recycling registration, Eco-Credit issuance, and burning logic.
+- `/frontend`: Web3 interface for the Eco Dashboard.
+- `/presentation`: Official project pitch deck.
+- `LICENSE`: MIT License.
 
-* **Smart Contracts:** Solidity, EVM compatibility (LACNet).
-* **Blockchain Network:** LACNet (Open Pro-Testnet) for sustainable network resource management (GAS efficiency).
-* **Frontend:** HTML/CSS/JavaScript (Web3 integration).
-* **Economic Framework:** Mechanism design for the provision of public goods and signaling theory applied to environmental sustainability.
-
-## 🚀 How to Run Locally
-
-### 1. Smart Contract
-Deploy `EcoIncentives.sol` using [Remix IDE](https://remix.ethereum.org/) or Hardhat.
-* Network: Custom RPC (LACNet).
-* Solidity version: `^0.8.0`.
-
-### 2. Frontend
-1. Clone this repository: `git clone https://github.com/edumerma9-source/Reducci-n-a-la-huella-de-carbono-usando-blockchain.git`
-2. Open `Frontend/index.html` in your web browser.
-
-## 📊 Economic Foundations
-This project integrates key economic theories:
-* **Coase Theorem:** Assigning property rights to environmental actions to reduce externalities.
-* **Pigouvian Incentives:** Correcting market failures in waste management.
-* **Signaling Theory (Spence):** Using the blockchain ledger as a reliable signal of institutional sustainability efforts.
-
-## 🔗 Important Links
-* **Video Demo:** [Insert YouTube/Vimeo Link Here]
-* **Pitch Deck:** Located in the `/Presentation` folder.
-
-## ⚖️ License
-This project is open-source and available under the [MIT License](LICENSE). By keeping our code public, we provide a technological public good that generates positive externalities for university ecosystems worldwide.
+## 6. Sustainable Development Goals (SDGs)
+- **SDG 11**: Sustainable Cities and Communities.
+- **SDG 12**: Responsible Consumption and Production.
+- **SDG 13**: Climate Action.
