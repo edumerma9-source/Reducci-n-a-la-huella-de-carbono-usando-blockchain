@@ -1,8 +1,8 @@
-# Reducci-n-a-la-huella-de-carbono-usando-blockchain
+# Reducción a la huella de carbono usando blockchain
 
 # Eco-Carbon UNMSM: A Blockchain Incentive Protocol for University Sustainability
 
-> **Innovating for a Sustainable Future Hackathon 2025**
+> **Innovating for a Sustainable Future Hackathon 2026**
 > Transforming environmental conservation into a verifiable economic asset within the Universidad Nacional Mayor de San Marcos.
 
 ---
@@ -22,10 +22,11 @@ The project is formally designated **Eco-Carbon UNMSM**. The name communicates t
 ### 4. Team Members and Roles
 | Team Member | Role | Key Responsibilities |
 | :--- | :--- | :--- |
-| **Aguinaga Diaz, Danilo** | EPITC | Team Member |
-| **Baez Alcca, Liliana** | EPITC | Team Member |
-| **Ticliahuanca Tello, Olenka** | EPITC | Team Member |
-| **Tipiana Oblitas, Carlos** | EPITC | Team Member |
+| **Edu Adelky Merma Uñapillco** | Project Lead | Team Member |
+| **Jair Antony Fredy Chipana Coarita** | Researcher | Team Member |
+| **Godfrey Torres Huacho** | Documentation | Team Member |
+| **Tony Alexander Herrada Callirgos** | Design | Team Member |
+| **Yordi Yulino Cainicela Pérez** | Evaluation | Team Member |
 
 ### 5. Problem Description & Market Failure Analysis
 Peru faces a structural crisis in solid-waste management. In 2024, only 2.7% of waste was effectively recycled. From a microeconomic standpoint, this is a market failure driven by **negative externalities** (uncompensated social costs) and high **transaction costs** (Coase, 1960), compounded by **information asymmetry** (Akerlof, 1970).
@@ -38,9 +39,8 @@ Peru faces a structural crisis in solid-waste management. In 2024, only 2.7% of 
 | **MetaMask** | Decentralized Wallet | Standardizes user interaction. |
 
 ### 7. Project Links
-* **Pitch Deck Link:** [Link to PDF]
-* **GitHub Repository Link:** [Your Repository URL]
-* **Video Demo Link:** [Insert Video URL Here]
+* **Pitch Deck Link:** [View Eco-Carbon Pitch Deck (PDF)](./Presentation/EcoIncentives_PitchDeck.pdf)
+* **GitHub Repository Link:** [https://github.com/edumerma9-source/Reducci-n-a-la-huella-de-carbono-usando-blockchain](https://github.com/edumerma9-source/Reducci-n-a-la-huella-de-carbono-usando-blockchain)
 
 ### 8. Justification of Impact and Scalability
 Eco-Carbon UNMSM functions as a signaling mechanism (Spence, 1973). On-chain records provide a credible signal of environmental behavior, resolving information gaps and enabling secondary use cases like reputation scoring. The near-zero marginal cost (MC → 0) allows for rapid institutional scaling.
